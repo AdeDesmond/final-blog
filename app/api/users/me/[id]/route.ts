@@ -27,7 +27,10 @@ export async function PATCH(
   }
 }
 
-export async function GET({ params }: { params: { id: string } }) {
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
     const { id: _id } = params;
     const user = await User.findOne({ _id }).select("-password");
